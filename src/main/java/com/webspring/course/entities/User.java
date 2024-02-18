@@ -1,10 +1,16 @@
 package com.webspring.course.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 
+@Entity
+@Table(name = "tb_user")//especificando o nome da tabela do banco de dados
 public class User implements Serializable {//interface para que o objeto possa ser trafegado em rede
+    @Id //definindo a PK
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;
