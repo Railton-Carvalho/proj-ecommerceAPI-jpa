@@ -1,6 +1,8 @@
 package com.webspring.course.resources;
 
+import com.webspring.course.entities.Order;
 import com.webspring.course.entities.User;
+import com.webspring.course.services.OrderService;
 import com.webspring.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,20 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/users")
-public class UserResource {
+@RequestMapping(value = "/api/orders")
+public class OrderResource {
     @Autowired
-    private UserService service;
+    private OrderService service;
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-        List<User> list = service.findAll();
-
+    public ResponseEntity<List<Order>> findAll(){
+        List<Order> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        User user = service.findById(id);
-        return ResponseEntity.ok().body(user);
+    public ResponseEntity<Order> findById(@PathVariable Long id){
+        Order order = service.findById(id);
+        return ResponseEntity.ok().body(order);
     }
 }
