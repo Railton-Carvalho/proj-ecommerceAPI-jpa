@@ -11,7 +11,7 @@ import java.util.Objects;
 public class User implements Serializable {//interface para que o objeto possa ser trafegado em rede
     @Id //definindo a PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String email;
     private String phone;
@@ -19,7 +19,7 @@ public class User implements Serializable {//interface para que o objeto possa s
 
     public User(){}
 
-    public User(long id, String name, String email, String phone, String password) {
+    public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -27,11 +27,11 @@ public class User implements Serializable {//interface para que o objeto possa s
         this.password = password;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
