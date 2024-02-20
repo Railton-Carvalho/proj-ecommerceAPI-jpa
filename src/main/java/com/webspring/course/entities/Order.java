@@ -11,6 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_order")
+
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +31,6 @@ public class Order implements Serializable {
         this.client = user;
         setOrderStatus(orderStatus);
     }
-
     public Instant getMoment() {
         return moment;
     }
