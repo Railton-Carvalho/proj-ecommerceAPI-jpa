@@ -1,5 +1,6 @@
 package com.webspring.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -15,7 +16,8 @@ public class Category implements Serializable {
     private Long id;
 
     private String name;
-    @Transient
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories") //dita de qual att ele deve pegar a fk
     private Set<Product> products = new HashSet<>();
 
     public Category(){}
