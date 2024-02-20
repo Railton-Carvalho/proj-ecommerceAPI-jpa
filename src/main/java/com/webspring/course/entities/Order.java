@@ -2,6 +2,7 @@ package com.webspring.course.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.webspring.course.entities.enum_class.OrderStatus;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -21,11 +22,13 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id") //nome da FK do DB
     private User client;
 
+    private Integer orderStatus;
     public Order(){}
-    public Order(Long id, Instant moment, User user) {
+    public Order(Long id, Instant moment,OrderStatus orderStatus, User user) {
         this.id = id;
         this.moment = moment;
         this.client = user;
+        setOrderStatus(orderStatus);
     }
 
     public Instant getMoment() {
@@ -44,6 +47,16 @@ public class Order implements Serializable {
         this.id = id;
     }
 
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        if (orderStatus != null){
+            this.orderStatus = orderStatus.getCode();
+        }
+
+    }
 
     public User getClient() {
         return client;
