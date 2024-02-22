@@ -16,6 +16,7 @@ public class Category implements Serializable {
     private Long id;
 
     private String name;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "categories") //dita de qual att ele deve pegar a fk
     private Set<Product> products = new HashSet<>();

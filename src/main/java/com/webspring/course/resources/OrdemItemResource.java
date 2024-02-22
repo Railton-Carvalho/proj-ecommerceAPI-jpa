@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/OrdemItem")
+@RequestMapping(value = "/api/OrderItem")
 public class OrdemItemResource implements Serializable {
     private OrderItemService service;
     public OrdemItemResource(OrderItemService service){

@@ -10,7 +10,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_ordem_item")
 public class OrderItem implements Serializable {
-
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();
     private Integer quantity;
@@ -31,13 +30,14 @@ public class OrderItem implements Serializable {
     public Order getOrder(){
         return id.getOrder();
     }
+    public Product getProduct(){
+        return id.getProduct();
+    }
+
     public void setOrder(Order order){
         id.setOrder(order);
     }
 
-    public Product getProduct(){
-        return id.getProduct();
-    }
     public void setProduct(Product product){
         id.setProduct(product);
     }
