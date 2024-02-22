@@ -1,13 +1,14 @@
 package com.webspring.course.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.webspring.course.entities.enum_class.OrderStatus;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_order")
@@ -23,6 +24,9 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id") //nome da FK do DB
     private User client;
 
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> orderItemSet = new HashSet<>();
+
     private Integer orderStatus;
     public Order(){}
     public Order(Long id, Instant moment,OrderStatus orderStatus, User user) {
@@ -31,6 +35,11 @@ public class Order implements Serializable {
         this.client = user;
         setOrderStatus(orderStatus);
     }
+
+    public Set<OrderItem> getOrderItemSet() {
+        return orderItemSet;
+    }
+
     public Instant getMoment() {
         return moment;
     }
@@ -55,7 +64,6 @@ public class Order implements Serializable {
         if (orderStatus != null){
             this.orderStatus = orderStatus.getCode();
         }
-
     }
 
     public User getClient() {
