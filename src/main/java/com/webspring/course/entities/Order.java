@@ -40,6 +40,7 @@ public class Order implements Serializable {
         setOrderStatus(orderStatus);
     }
 
+
     public Set<OrderItem> getOrderItem() {
         return items;
     }
@@ -60,9 +61,7 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public OrderStatus getOrderStatus() {
-        return OrderStatus.valueOf(orderStatus);
-    }
+
 
     public void setOrderStatus(OrderStatus orderStatus) {
         if (orderStatus != null){
@@ -82,6 +81,15 @@ public class Order implements Serializable {
     }
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }public OrderStatus getOrderStatus() {
+        return OrderStatus.valueOf(orderStatus);
+    }
+    public Double getTotal(){
+        Double total = 0.0;
+        for (OrderItem oi: items){
+            total += oi.getSubTotal();
+        }
+        return total;
     }
     @Override
     public boolean equals(Object o) {

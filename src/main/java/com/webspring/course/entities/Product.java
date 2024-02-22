@@ -23,8 +23,6 @@ public class Product implements Serializable {
     private Double price;
 
     private String imgUrl;
-
-
     @ManyToMany //      ascociation_name      first_pk                                      // second_pk
     @JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"),inverseJoinColumns =
     @JoinColumn(name = "category_id"))
