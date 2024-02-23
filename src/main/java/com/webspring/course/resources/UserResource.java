@@ -31,6 +31,13 @@ public class UserResource {
     public ResponseEntity<User> insert(@RequestBody User obj){
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id").buildAndExpand(obj.getId()).toUri();
+        //Maneira Padrâo de pegar a location do obj a ser excluido do DB
         return ResponseEntity.created(uri).body(obj);
+    }
+
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
