@@ -10,7 +10,7 @@ import java.util.Objects;
 
 
 @Entity
-    @Table(name = "tb_user")//especificando o nome da tabela do banco de dados
+@Table(name = "tb_user")//especificando o nome da tabela do banco de dados
 public class User implements Serializable {//interface para que o objeto possa ser trafegado em rede
     @Id //definindo a PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)

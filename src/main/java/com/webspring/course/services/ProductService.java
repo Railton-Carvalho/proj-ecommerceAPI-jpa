@@ -3,6 +3,7 @@ package com.webspring.course.services;
 import com.webspring.course.entities.Order;
 import com.webspring.course.entities.Product;
 import com.webspring.course.repositories.ProductRepository;
+import com.webspring.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,6 @@ public class ProductService {
     }
     public Product findById(Long id){
         Optional<Product> obj =  repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }
